@@ -3787,7 +3787,7 @@ impl Build {
     /// 2. Else if the `CXXSTDLIB` environment variable is set, uses its value.
     /// 3. Else the default is `c++` for OS X and BSDs, `c++_shared` for Android,
     ///    `None` for MSVC and `stdc++` for anything else.
-    fn get_cpp_link_stdlib(&self) -> Result<Option<Cow<'_, Path>>, Error> {
+    pub fn get_cpp_link_stdlib(&self) -> Result<Option<Cow<'_, Path>>, Error> {
         match &self.cpp_link_stdlib {
             Some(s) => Ok(s.as_deref().map(Path::new).map(Cow::Borrowed)),
             None => {
