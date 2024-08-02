@@ -88,7 +88,7 @@
 //!
 //! Furthermore, projects using this crate may specify custom environment variables
 //! to be inspected, for example via the `Build::try_flags_from_environment`
-//! function. Consult the project’s own documentation or its use of the `cc` crate
+//! function. Consult the project's own documentation or its use of the `cc` crate
 //! for any additional variables it may use.
 //!
 //! Each of these variables can also be supplied with certain prefixes and suffixes,
@@ -1120,7 +1120,8 @@ impl Build {
     pub fn opt_fast_release(&mut self) -> &mut Build {
         if self
             .getenv_unwrap("OPT_LEVEL")
-            .unwrap_or_else(|_| Arc::from("3")).as_ref()
+            .unwrap_or_else(|_| Arc::from(OsStr::new("3")))
+            .as_ref()
             == "3"
         {
             let compiler = self.get_compiler();
@@ -1898,7 +1899,7 @@ impl Build {
         }
 
         for flag in self.flags.iter() {
-            cmd.args.push((**flag).into());
+            cmd.args.push((**flag).to_os_string());
         }
 
         for flag in self.flags_supported.iter() {
@@ -1906,7 +1907,7 @@ impl Build {
                 .is_flag_supported_inner(flag, &cmd.path, &target)
                 .unwrap_or(false)
             {
-                cmd.push_cc_arg((**flag).into());
+                cmd.push_cc_arg((*flag).to_os_string());
             }
         }
 
