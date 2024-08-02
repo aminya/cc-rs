@@ -6,6 +6,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0](https://github.com/aminya/cc-rs/compare/cc-v1.1.7...cc-v1.2.0) - 2024-08-02
+
+### Added
+- add opt_fast_release method
+
+### Fixed
+- fix os_string conversions from/to ARC
+- make get_cpp_link_stdlib public
+
+### Other
+- skip the opt_fast_release tests in the debug mode
+
 ## [1.1.7](https://github.com/rust-lang/cc-rs/compare/cc-v1.1.6...cc-v1.1.7) - 2024-07-29
 
 ### Other
