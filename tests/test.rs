@@ -103,10 +103,10 @@ fn gnu_opt_fast_release() {
     test.gcc().opt_fast_release().file("foo.c").compile("foo");
 
     test.cmd(0)
-        .must_have("-Ofast")
+        .must_have("-O3")
+        .must_have("-ffast-math")
         .must_not_have("-O1")
         .must_not_have("-O2")
-        .must_not_have("-O3")
         .must_not_have("-Oz");
 }
 

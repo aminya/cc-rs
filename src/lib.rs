@@ -1213,7 +1213,7 @@ impl Build {
     }
 
     /// On release builds with `OPT_LEVEL` set to 3, this function sets all the optimization level for the fastest generated object files.
-    /// This sets `-Ofast` on Clang and GCC and enables all the optimizations on MSVC. This includes fast-math mode.
+    /// This sets `-O3 -ffast-math` on Clang and GCC and enables all the optimizations on MSVC. This includes fast-math mode.
     ///
     /// It does not do anything on debug builds or when `OPT_LEVEL` is not set to 3
     pub fn opt_fast_release(&mut self) -> &mut Build {
@@ -1237,7 +1237,9 @@ impl Build {
             // .flag("/LTCG") // link time code generation
             // .flag("/GL") // whole program optimization
             } else if compiler.is_like_clang() || compiler.is_like_gnu() {
-                self.opt_level_str("fast").define("NDEBUG", None);
+                self.opt_level_str("3")
+                    .flag("-ffast-math")
+                    .define("NDEBUG", None);
             }
         }
         self
