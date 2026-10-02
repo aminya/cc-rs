@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.6.0](https://github.com/aminya/cc-rs/compare/cc-v1.5.1...cc-v1.6.0) - 2026-10-02
+
+### Added
+
+- add opt_fast_release method
+- add `CXXSTDLIB_STATIC` to link the C++ stdlib statically from outside ([#1957](https://github.com/aminya/cc-rs/pull/1957))
+
+### Fixed
+
+- fix -Ofast deprecation
+- make get_cpp_link_stdlib public
+- forward each line of compiler stderr once and whole with `parallel` ([#1959](https://github.com/aminya/cc-rs/pull/1959))
+
+### Other
+
+- add support for `armeb-unknown-linux-gnueabi` ([#1958](https://github.com/aminya/cc-rs/pull/1958))
+
 ## [1.5.1](https://github.com/rust-lang/cc-rs/compare/cc-v1.5.0...cc-v1.5.1) - 2026-09-25
 
 ### Fixed
